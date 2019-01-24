@@ -69,8 +69,22 @@
                     </h:commandButton>
 
                 </h:column>
+            </h:dataTable>
+
+            <h2>history list</h2>
+            <h:dataTable value="#{myBooksBean.historyBooks}"
+                         var="res">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{res.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                    #{res.status}
+                </h:column>
 
             </h:dataTable>
+
         </h:form>
     </ui:define>
 </ui:composition>
