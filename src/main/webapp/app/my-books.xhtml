@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2018 Dimitrijs Fedotovs
+  ~ This code is licensed under MIT license
+  ~ (see LICENSE.txt for details)
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/main.xhtml">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="#{myBooksBean.prepare}"/>
+        </f:metadata>
+
+        <h2>Available books</h2>
+        <h:dataTable value="#{myBooksBean.availableBooks}"
+                     var="res">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{res.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{res.status}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Book Title</f:facet>
+                #{res.book.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">User Name</f:facet>
+                #{res.user.loginName}
+            </h:column>
+        </h:dataTable>
+
+        <h2>Wait list</h2>
+        <h:dataTable value="#{myBooksBean.inQueueBooks}"
+                     var="res">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{res.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{res.status}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Book Title</f:facet>
+                #{res.book.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">User Name</f:facet>
+                #{res.user.loginName}
+            </h:column>
+        </h:dataTable>
+
+        <h2>Taken list</h2>
+        <h:dataTable value="#{myBooksBean.takenBooks}"
+                     var="res">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{res.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{res.status}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Book Title</f:facet>
+                #{res.book.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">User Name</f:facet>
+                #{res.user.loginName}
+            </h:column>
+        </h:dataTable>
+
+    </ui:define>
+</ui:composition>
+
+</html>

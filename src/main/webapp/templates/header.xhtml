@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition>
+    <h:form>
+        <div class="w3-bar w3-black">
+            <ui:fragment rendered="#{request.isUserInRole('USER')}">
+                <h:link value="User space" outcome="/app/index.xhtml" styleClass="w3-bar-item w3-button"/>
+            </ui:fragment>
+            <ui:fragment rendered="#{request.isUserInRole('MANAGER')}">
+                <h:link value="Manager space" outcome="/manage/index.xhtml" styleClass="w3-bar-item w3-button"/>
+                <h:link value="Create Book" outcome="/manage/new-book.xhtml" styleClass="w3-bar-item w3-button"/>
+            </ui:fragment>
+            <ui:fragment rendered="#{request.isUserInRole('ADMIN')}">
+                <h:link value="Admin space" outcome="/admin/index.xhtml" styleClass="w3-bar-item w3-button"/>
+                <h:link value="Registered Users" outcome="/admin/user-list.xhtml" styleClass="w3-bar-item w3-button"/>
+            </ui:fragment>
+            <ui:fragment rendered="#{empty currentUser.user}">
+                <h:link value="Login" outcome="/app/index.xhtml" styleClass="w3-bar-item w3-button"/>
+                <h:link value="Register" outcome="/registration.xhtml" styleClass="w3-bar-item w3-button"/>
+            </ui:fragment>
+            <ui:fragment rendered="#{not empty currentUser.user}">
+                <h:commandLink value="Logout" action="#{loginBean.logout}" styleClass="w3-bar-item w3-button"/>
+            </ui:fragment>
+        </div>
+    </h:form>
+</ui:composition>
+</html>
